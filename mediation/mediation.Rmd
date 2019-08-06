@@ -61,4 +61,8 @@ We first simulate data according to the following classic mediation DAG, allowin
 knitr::include_graphics(here::here("mediation", "figures", "simple-mediation-DAG.png"))
 ```
 
+### Binary outcome and binary mediator
 
+```{r}
+
+```
