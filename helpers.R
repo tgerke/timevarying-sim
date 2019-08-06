@@ -7,7 +7,7 @@ sample_bin <- function(p) {
 sim_glm <- function(
   data,
   formula,
-  family = "binomial",
+  family,
   ...
 ) {
   formula <- rlang::enexpr(formula)
@@ -18,6 +18,7 @@ sim_glm <- function(
   data[[lhs]] <- switch(
     family,
     "binomial" = sample_bin(1 / (1 + exp(-data[[lhs]]))),
+    "gaussian" = data[[lhs]] + rnorm(nrow(data), 0, ...),
     stop("Unknown family '", family, "'")
   )
 
@@ -41,3 +42,7 @@ formula_lhs <- function(formula) {
 
   rlang::quo_name(formula[[2]])
 }
+
+# examples
+#sim_glm(tibble(x = runif(100)), y~5*x, family = "binomial")
+#sim_glm(tibble(x = runif(100)), y~5*x, family = "gaussian", sd = 1)
