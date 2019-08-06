@@ -3,8 +3,8 @@ sample_bin <- function(p) {
   purrr::map_int(p, ~ sample(0:1, 1, prob = c(1 - .x, .x)))
 }
 
-# simulate binary data
-sim_binary <- function(
+# simulate GLM data from a user-specified formula
+sim_glm <- function(
   data,
   formula,
   family = "binomial",
@@ -17,7 +17,7 @@ sim_binary <- function(
 
   data[[lhs]] <- switch(
     family,
-    "binomial" = sample_bin(1 / (1 + exp(data[[lhs]]))),
+    "binomial" = sample_bin(1 / (1 + exp(-data[[lhs]]))),
     stop("Unknown family '", family, "'")
   )
 
