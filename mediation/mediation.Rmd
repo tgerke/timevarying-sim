@@ -14,6 +14,12 @@ editor_options:
   chunk_output_type: console
 ---
 
+<style>
+p.caption {
+  font-size: 0.8em;
+}
+</style>
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = FALSE, cache = FALSE,
@@ -48,4 +54,11 @@ theme_set(
 ```
 
 <!-- Start Document Here -->
-We will simulate data according to the DAG 
+## Mediation with no confounding
+We first simulate data according to the following classic mediation DAG, allowing the exposure, mediator, and outcome variables to take either binary or continuous values. 
+
+```{r echo=FALSE, fig.cap="Simple mediation DAG with exposure (E), mediator (M), and outcome (Y)", out.width = '50%'}
+knitr::include_graphics(here::here("mediation", "figures", "simple-mediation-DAG.png"))
+```
+
+
